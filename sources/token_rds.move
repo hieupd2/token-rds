@@ -11,8 +11,6 @@ module token_rds::rds;
 
 use sui::coin::{Self, Coin};
 use sui::url;
-use sui::tx_context::TxContext;
-use std::option;
 
 #[error]
 const E_AMOUNT_ZERO: vector<u8> = b"Zero Amount";
