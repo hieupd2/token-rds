@@ -12,10 +12,7 @@ fun test_transfer_amount_partial_balance() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with enough balance
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -53,10 +50,7 @@ fun test_transfer_amount_full_balance() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with 1000 units
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -86,10 +80,7 @@ fun test_transfer_amount_minimum_amount() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with 100 units
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -128,10 +119,7 @@ fun test_transfer_amount_zero_amount_fails() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -154,10 +142,7 @@ fun test_transfer_amount_insufficient_balance_fails() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with 1000 units
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -178,10 +163,7 @@ fun test_transfer_amount_to_self() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with 1000 units
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -211,10 +193,7 @@ fun test_transfer_amount_large_amounts() {
     let mut scenario = ts::begin(sender);
     
     // Setup: use initial coins from init (1M tokens * 10^8)
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -252,10 +231,7 @@ fun test_transfer_amount_multiple_sequential_transfers() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with enough balance
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -309,10 +285,7 @@ fun test_transfer_amount_exact_edge_cases() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with exactly 1 unit
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {

@@ -12,10 +12,7 @@ fun test_init_creates_currency_with_correct_metadata() {
     let mut scenario = ts::begin(@0x1);
     
     // Test the init function
-    ts::next_tx(&mut scenario, @0x1);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, @0x1);
     {
@@ -42,10 +39,7 @@ fun test_init_mints_correct_initial_supply() {
     let mut scenario = ts::begin(@0x1);
     
     // Test the init function
-    ts::next_tx(&mut scenario, @0x1);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, @0x1);
     {
@@ -67,10 +61,7 @@ fun test_init_freezes_treasury_cap() {
     let mut scenario = ts::begin(@0x1);
     
     // Test the init function
-    ts::next_tx(&mut scenario, @0x1);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, @0x1);
     {
@@ -89,10 +80,7 @@ fun test_init_creates_all_required_objects() {
     let mut scenario = ts::begin(@0x1);
     
     // Test the init function
-    ts::next_tx(&mut scenario, @0x1);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, @0x1);
     {
@@ -111,10 +99,7 @@ fun test_init_with_different_sender() {
     let mut scenario = ts::begin(sender);
     
     // Test the init function with different sender
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {

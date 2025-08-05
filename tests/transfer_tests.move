@@ -12,10 +12,7 @@ fun test_transfer_basic_functionality() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coins
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -47,10 +44,7 @@ fun test_transfer_full_balance() {
     let mut scenario = ts::begin(sender);
     
     // Setup: get initial coins from init
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -81,10 +75,7 @@ fun test_transfer_small_amount() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coin with small amount
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -117,10 +108,7 @@ fun test_transfer_to_same_address() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create coins
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
@@ -151,10 +139,7 @@ fun test_transfer_multiple_transactions() {
     let mut scenario = ts::begin(sender);
     
     // Setup: create multiple coins
-    ts::next_tx(&mut scenario, sender);
-    {
-        rds::init_for_testing(ts::ctx(&mut scenario));
-    };
+    rds::init_for_testing(ts::ctx(&mut scenario));
     
     ts::next_tx(&mut scenario, sender);
     {
