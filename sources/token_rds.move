@@ -13,10 +13,10 @@ use sui::coin::{Self, Coin};
 use sui::url;
 
 #[error]
-const E_AMOUNT_ZERO: vector<u8> = b"Zero Amount";
+const E_AMOUNT_ZERO: u8 = 0;
 
 #[error]
-const E_INSUFFICIENT: vector<u8> = b"Insufficient Amount";
+const E_INSUFFICIENT: u8 = 1;
 
 public struct RDS has drop {}
 
@@ -25,9 +25,9 @@ fun init(otw: RDS, ctx: &mut TxContext) {
     let icon_url = url::new_unsafe_from_bytes(b"https://framerusercontent.com/images/0KKocValgAmB9XHzcFI6tALxGGQ.jpg");
     let decimals: u8 = 8;
  
-    // Fixed multiplier for 8 decimals (10^8)
-    let multiplier = 100000000; // 10^8
- 
+    // Calculate multiplier based on decimals (10^decimals)
+    let multiplier = pow(10, decimals);
+
     // Create the currency - make treasury mutable
     let (mut treasuryCap, metadata) = coin::create_currency(
         otw,
@@ -39,8 +39,8 @@ fun init(otw: RDS, ctx: &mut TxContext) {
         ctx,
     );
  
-    // Mint 1m tokens (1m * 10^8 base units)
-    let initial_coins = coin::mint(&mut treasuryCap, 1000000 * multiplier, ctx);
+    // Mint 1m tokens (1m * 10^decimals base units)
+    let initial_coins = coin::mint(&mut treasuryCap, getMaxCap(multiplier), ctx);
     transfer::public_transfer(initial_coins, tx_context::sender(ctx));
  
     transfer::public_freeze_object(metadata);
@@ -71,6 +71,28 @@ public entry fun transfer_amount(
     let to_send = coin::split<RDS>(&mut c, amount, ctx);
     transfer::public_transfer(to_send, recipient);
     transfer::public_transfer(c, tx_context::sender(ctx));
+}
+
+
+fun getMaxCap(multiplier: u64): u64 {
+    // Return the maximum cap for the currency
+    // 1 million RDS in base units
+    return 1_000_000 * multiplier
+}
+
+// Helper function to calculate 10^exponent
+fun pow(base: u64, exponent: u8): u64 {
+    if (exponent == 0) {
+        return 1
+    };
+    
+    let mut result = 1;
+    let mut i = 0;
+    while (i < exponent) {
+        result = result * base;
+        i = i + 1;
+    };
+    result
 }
 
 #[test_only]
